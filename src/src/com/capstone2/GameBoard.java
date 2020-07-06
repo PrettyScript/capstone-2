@@ -5,19 +5,19 @@ import java.util.Arrays;
 public class GameBoard implements IDrawable {
 
     private Player player;
-    private Chips chips;
+    private Chip chip;
     private String[][] gameBoard = new String[6][7];
 
 
     @Override
     public void drawBoard() {
 
-        initializeGameBoard();
-
-        gameBoard[5][1] = "T";
-        gameBoard[0][0] = "T";
-        gameBoard[3][3] = "Z";
-
+//        initializeGameBoard();
+//
+//        gameBoard[5][1] = "X";
+//        gameBoard[0][0] = "O";
+//        gameBoard[3][3] = "X";
+//
         System.out.println("=========================================================");
         System.out.println("|  [1]  |  [2]  |  [3]  |  [4]  |  [5]  |  [6]  |  [7]  |");
         System.out.println("=========================================================");
@@ -30,9 +30,13 @@ public class GameBoard implements IDrawable {
         }
         System.out.println(board);
 
+
+
+
+
     }
 
-    private void initializeGameBoard()  {
+    public void initializeGameBoard()  {
         for(String[] row: gameBoard){
             Arrays.fill(row, " ");
         }
@@ -52,6 +56,24 @@ public class GameBoard implements IDrawable {
                 +formatEntry(row[5])
                 +formatEntry(row[6])
                 + "\n";
+    }
+
+
+
+    public void updateBoard(Player player, int choice) {
+     // take in players column choice
+     // loop through board rows to see if there is already a chip there
+        // subtracting 1 from choice, to match the zero based array
+        choice--;
+        for(int i=gameBoard.length-1; i> 0; i--) {
+            if(gameBoard[i][choice].equals(" ")) {
+                gameBoard[i][choice] = player.getChip().getName();
+                break;
+            }
+        }
+
+        drawBoard();
+
     }
 
 }

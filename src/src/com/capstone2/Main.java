@@ -7,23 +7,41 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Player playerOne = new Player("Jessica");
-        Player playerTwo = new Player("Hugh");
+        Player playerOne = new Player(new Chip("X"));
+        Player playerTwo = new Player(new Chip("O"));
 
-        Scanner scanner = new Scanner(System.in);
+//        System.out.println(playerOne.getChip().getName());
 
 
-        System.out.print("Player one enter name: ");
-        String player1Name = scanner.nextLine();
-        playerOne.setName(player1Name);
-
-        System.out.print("Player two enter name: ");
-        String player2Name = scanner.nextLine();
-        playerTwo.setName(player2Name);
-
-        System.out.println("Welcome " + playerOne.getName() + " & " + playerTwo.getName());
+//        Scanner scanner = new Scanner(System.in);
+//
+//
+//        System.out.print("Player one enter name: ");
+//        String player1Name = scanner.nextLine();
+//        playerOne.setName(player1Name);
+//
+//        System.out.print("Player two enter name: ");
+//        String player2Name = scanner.nextLine();
+//        playerTwo.setName(player2Name);
+//
+//        System.out.println("Welcome " + playerOne.getName() + " & " + playerTwo.getName());
 
         GameBoard game = new GameBoard();
+        game.initializeGameBoard();
         game.drawBoard();
+        game.updateBoard(playerOne, 3);
+        game.updateBoard(playerTwo, 1);
+        game.updateBoard(playerOne, 3);
+
+    }
+
+    public void startGame() {
+        boolean gameOver = true;
+        while(!gameOver) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Player one turn: ");
+            scanner.nextInt();
+
+        }
     }
 }

@@ -2,9 +2,10 @@ package com.capstone2;
 
 public class Player {
     private String name;
+    private Chip chip;
 
-    public Player(String name) {
-        this.name = name;
+    public Player(Chip chip) {
+        this.chip = chip;
     }
 
     public String getName() {
@@ -13,5 +14,9 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Chip getChip() {
+        return chip;
     }
 }

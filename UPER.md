@@ -34,7 +34,25 @@ it was easy to keep track of the status of my completion and made it easy to man
 <h2>
     3. Executing the Plan
 </h2>
-*
+- Game Development
+    ✔ Create the draw interface
+    - Main
+        - IO 
+        - Get players' name
+        - Display board
+        - player 1 coordinate chip placement 
+        - display board 
+        - player 2 coordinate chip placement 
+        - while loop IO so that the checkstate() can keep track of the chip placements?
+    - Gameboard Class
+    - Player Class
+    - Chips Class
+- Paperwork
+    - Create Instructions for the game
+    - Complete UPER file
+    - Complete OOP Questions
+    - Add to UML file to capstone folder
+    
 *
 *
 *

@@ -14,13 +14,22 @@ public class GameBoard implements IDrawable {
     @Override
     public void drawBoard() {
 
-        gameBoard[1][0] = "X";
-        gameBoard[0][3] = "X";
-        gameBoard[0][4] = "X";
-        gameBoard[0][5] = "X";
-        gameBoard[0][6] = "X";
-        gameBoard[2][2] = "X";
+//        gameBoard[1][0] = "X";
+//        gameBoard[0][3] = "X";
+//        gameBoard[0][4] = "X";
+//        gameBoard[0][5] = "X";
+//        gameBoard[0][6] = "X";
+//        gameBoard[2][2] = "X";
 //        gameBoard[0][2] = "X";
+
+        gameBoard[3][1] = "X";
+        gameBoard[2][2] = "X";
+        gameBoard[3][1] = "X";
+        gameBoard[1][3] = "X";
+
+        gameBoard[4][5] = "O";
+        gameBoard[3][4] = "O";
+        gameBoard[2][3] = "O";
 
         System.out.println("=========================================================");
         System.out.println("|  [1]  |  [2]  |  [3]  |  [4]  |  [5]  |  [6]  |  [7]  |");
@@ -146,15 +155,88 @@ public class GameBoard implements IDrawable {
                     System.out.println("error");
                 }
             }
-
         }
-//        System.out.println("Player one: " + player1);
-//        System.out.println("Player two: " + player2);
-
     }
 
-    public void checkDiagonal() {
+    public void checkDiagonals (int direction) throws Exception {
+//        checkRightDiagonal();
+//        checkLeftDiagonal();
 
+        for (int i = gameBoard.length - 1; i >= 0; i--) {
+            for (int j = gameBoard[i].length - 1; j >= 0; j--) {
+                try {
+                    if( gameBoard[i][j].contains("X") &&
+                            gameBoard[i-1][j + (1 * direction)].contains("X") &&
+                            gameBoard[i-2][j + (2 * direction)].contains("X") &&
+                            gameBoard[i-3][j + (3 * direction)].contains("X")
+                    ) {
+                        gameOver(new Player(new Chip("X")));
+                    }
+
+                    if( gameBoard[i][j].contains("O") &&
+                            gameBoard[i-1][j + (1 * direction)].contains("O") &&
+                            gameBoard[i-2][j + (2 * direction)].contains("O") &&
+                            gameBoard[i-3][j + (3 * direction)].contains("O")
+                    ) {
+                        gameOver(new Player(new Chip("O")));
+                    }
+                } catch (Exception e) {
+                    System.out.println("error");
+                }
+            }
+        }
+    }
+
+    public void checkRightDiagonal() {
+        for (int i = gameBoard.length - 1; i >= 0; i--) {
+            for (int j = gameBoard[i].length - 1; j >= 0; j--) {
+                try {
+                    if( gameBoard[i][j].contains("X") &&
+                        gameBoard[i-1][j+1].contains("X") &&
+                        gameBoard[i-2][j+2].contains("X") &&
+                        gameBoard[i-3][j+3].contains("X")
+                    ) {
+                        gameOver(new Player(new Chip("X")));
+                    }
+
+                    if( gameBoard[i][j].contains("O") &&
+                            gameBoard[i-1][j+1].contains("O") &&
+                            gameBoard[i-2][j+2].contains("O") &&
+                            gameBoard[i-3][j+3].contains("O")
+                    ) {
+                        gameOver(new Player(new Chip("O")));
+                    }
+                } catch (Exception e) {
+                    System.out.println("error");
+                }
+            }
+        }
+    }
+
+    public void checkLeftDiagonal() {
+        for (int i = gameBoard.length - 1; i >= 0; i--) {
+            for (int j = gameBoard[i].length - 1; j >= 0; j--) {
+                try {
+                    if( gameBoard[i][j].contains("X") &&
+                            gameBoard[i-1][j-1].contains("X") &&
+                            gameBoard[i-2][j-2].contains("X") &&
+                            gameBoard[i-3][j-3].contains("X")
+                    ) {
+                        gameOver(new Player(new Chip("X")));
+                    }
+
+                    if( gameBoard[i][j].contains("O") &&
+                            gameBoard[i-1][j-1].contains("O") &&
+                            gameBoard[i-2][j-2].contains("O") &&
+                            gameBoard[i-3][j-3].contains("O")
+                    ) {
+                        gameOver(new Player(new Chip("O")));
+                    }
+                } catch (Exception e) {
+                    System.out.println("error");
+                }
+            }
+        }
     }
 
 

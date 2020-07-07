@@ -44,6 +44,8 @@ public class Main {
 
 //        game.checkHorizontal();
 //        game.checkVertical();
+        game.checkDiagonals(1);
+        game.checkDiagonals(-1);
 
     }
 

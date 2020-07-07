@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
 
         Player playerOne = new Player(new Chip("X"));
@@ -32,6 +32,18 @@ public class Main {
         game.updateBoard(playerOne, 3);
         game.updateBoard(playerTwo, 1);
         game.updateBoard(playerOne, 3);
+        game.updateBoard(playerTwo, 7);
+        game.updateBoard(playerOne, 1);
+        game.updateBoard(playerTwo, 2);
+        game.updateBoard(playerOne, 4);
+        game.updateBoard(playerTwo, 6);
+        game.updateBoard(playerOne, 7);
+        game.updateBoard(playerTwo, 4);
+        game.updateBoard(playerOne, 3);
+        game.updateBoard(playerTwo, 5);
+
+//        game.checkHorizontal();
+        game.checkVertical();
 
     }
 

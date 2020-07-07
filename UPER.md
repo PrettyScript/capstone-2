@@ -37,18 +37,22 @@ it was easy to keep track of the status of my completion and made it easy to man
 - Game Development
     ✔ Create the draw interface
     - Main
-        - IO 
-        - Get players' name
-        - Display board
+        ✔ IO 
+        ✔ Get players' name
+        ✔ Display board
         - player 1 coordinate chip placement 
         - display board 
         - player 2 coordinate chip placement 
-        - while loop IO so that the checkState() can keep track of the chip placements?
+        - while loop IO so that the checkState() can keep track of the chip placements
     - GameBoard Class
-        - updateBoard()
+        ✔ updateBoard()
+        - checkState()
+            - checkHorizontal()
+            - checkVertical()
+            - checkDiagonal()
     - Player Class
     - Chips Class
-        - Create a method that will assign chips to a player
+        ✔ Create a method that will assign chips to a player
 - Paperwork
     - Create Instructions for the game
     - Complete UPER file

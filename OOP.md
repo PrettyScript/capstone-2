@@ -41,7 +41,9 @@ As you should know by now, there are 4 pillars of Object Oriented Programming.
 
 
 
-Please write a 1-3 paragraphs explaining these 4 concepts further.  Please provide a sufficient enough explanation about these pillars, as well as some examples to illustrate the practical use cases of these principles.  
+Please write a 1-3 paragraphs explaining these 4 concepts further.  
+Please provide a sufficient explanation about these pillars, 
+as well as some examples to illustrate the practical use cases of these principles.  
 
 
 

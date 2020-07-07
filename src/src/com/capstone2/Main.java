@@ -43,7 +43,7 @@ public class Main {
         game.updateBoard(playerTwo, 5);
 
 //        game.checkHorizontal();
-        game.checkVertical();
+//        game.checkVertical();
 
     }
 

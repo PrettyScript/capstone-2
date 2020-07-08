@@ -6,7 +6,7 @@ public class GameBoard implements IDrawable {
 
     private Player player;
     private Chip chip;
-    private String[][] gameBoard = new String[6][7];
+    private final String[][] gameBoard = new String[6][7];
     private int player1 = 0;
     private int player2 = 0;
     public boolean gameOver = false;
@@ -62,69 +62,65 @@ public class GameBoard implements IDrawable {
             }
         }
         drawBoard();
-        checkState();
+        checkState(player);
     }
 
-    public void checkState() throws Exception {
-        // return boolean?
-        checkHorizontal();
-        checkVertical();
-        checkLeftDiagonal();
-        checkRightDiagonal();
+    private void checkState(Player player) throws Exception {
+        checkHorizontal(player);
+        checkVertical(player);
+        checkDiagonals(player, 1);
+        checkDiagonals(player, -1);
 
     }
 
-    private void checkHorizontal() throws Exception  {
+    private void checkHorizontal(Player player) throws Exception  {
         for(int i=gameBoard.length-1; i>= 0; i--) {
 
             int playerOneCount = 0;
             int playerTwoCount = 0;
 
             for(int j=gameBoard[i].length-1; j>= 0; j--) {
-//                System.out.println("("+(i+1)+","+(j+1)+"): "+gameBoard[i][j]);
                 try {
                     if(gameBoard[i][j].contains("X")) {
 
                         playerOneCount++;
 
                         if(playerOneCount == 4) {
-                            gameOver(new Player(new Chip("X")));
+                            System.out.println("Check Horizontal Player X Won");
+                            gameOver(player);
                         }
 
                     } else {
-                        playerOneCount = 1;
+                        playerOneCount = 0;
                     }
 
                     if(gameBoard[i][j].contains("O")) {
                         playerTwoCount++;
                         if(playerTwoCount == 4) {
-                            gameOver(new Player(new Chip("O")));
+                            System.out.println("Check Horizontal Player O Won");
+                            gameOver(player);
                         }
                     } else {
-                        playerTwoCount = 1;
+                        playerTwoCount = 0;
                     }
                 } catch (Exception e){
 //                    System.out.println("error");
-
                 }
             }
         }
-
-//        System.out.println("\uD83D\uDE00");
     }
 
-    private void checkVertical() throws Exception {
+    public void checkVertical(Player player) throws Exception {
         for (int i = gameBoard[0].length - 1; i >= 0; i--) {
 
             for (int j = gameBoard.length - 1; j >= 0; j--) {
-
-//                System.out.println((j+1) + " : " + gameBoard[j][i]);
                 try {
+//                    System.out.println(j);
                     if (gameBoard[j][i].contains("X")) {
                         player1++;
 
                         if(player1 == 4) {
-                            gameOver(new Player(new Chip("X")));
+                            gameOver(player);
                         }
                     } else {
                         player1 = 0;
@@ -134,7 +130,7 @@ public class GameBoard implements IDrawable {
                         player2++;
 
                         if(player2 == 4) {
-                            gameOver(new Player(new Chip("O")));
+                            gameOver(player);
                         }
                     } else {
                         player2 = 0;
@@ -146,60 +142,31 @@ public class GameBoard implements IDrawable {
         }
     }
 
-
-
-    private void checkRightDiagonal() {
+    private void checkDiagonals (Player player, int direction) throws Exception {
         for (int i = gameBoard.length - 1; i >= 0; i--) {
             for (int j = gameBoard[i].length - 1; j >= 0; j--) {
                 try {
                     if( gameBoard[i][j].contains("X") &&
-                        gameBoard[i-1][j+1].contains("X") &&
-                        gameBoard[i-2][j+2].contains("X") &&
-                        gameBoard[i-3][j+3].contains("X")
+                            gameBoard[i-1][j + (1 * direction)].contains("X") &&
+                            gameBoard[i-2][j + (2 * direction)].contains("X") &&
+                            gameBoard[i-3][j + (3 * direction)].contains("X")
                     ) {
-                        gameOver(new Player(new Chip("X")));
+                        gameOver(player);
                     }
 
                     if( gameBoard[i][j].contains("O") &&
-                            gameBoard[i-1][j+1].contains("O") &&
-                            gameBoard[i-2][j+2].contains("O") &&
-                            gameBoard[i-3][j+3].contains("O")
+                            gameBoard[i-1][j + (1 * direction)].contains("O") &&
+                            gameBoard[i-2][j + (2 * direction)].contains("O") &&
+                            gameBoard[i-3][j + (3 * direction)].contains("O")
                     ) {
-                        gameOver(new Player(new Chip("O")));
+                        gameOver(player);
                     }
                 } catch (Exception e) {
-                    System.out.println("error");
+//                    System.out.println("error");
                 }
             }
         }
     }
-
-    private void checkLeftDiagonal() {
-        for (int i = gameBoard.length - 1; i >= 0; i--) {
-            for (int j = gameBoard[i].length - 1; j >= 0; j--) {
-                try {
-                    if( gameBoard[i][j].contains("X") &&
-                            gameBoard[i-1][j-1].contains("X") &&
-                            gameBoard[i-2][j-2].contains("X") &&
-                            gameBoard[i-3][j-3].contains("X")
-                    ) {
-                        gameOver(new Player(new Chip("X")));
-                    }
-
-                    if( gameBoard[i][j].contains("O") &&
-                            gameBoard[i-1][j-1].contains("O") &&
-                            gameBoard[i-2][j-2].contains("O") &&
-                            gameBoard[i-3][j-3].contains("O")
-                    ) {
-                        gameOver(new Player(new Chip("O")));
-                    }
-                } catch (Exception e) {
-                    System.out.println("error");
-                }
-            }
-        }
-    }
-
 
     public void gameOver(Player player) {
         System.out.println("Game over. " + player.getName() + " has won!");

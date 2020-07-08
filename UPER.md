@@ -40,16 +40,16 @@ it was easy to keep track of the status of my completion and made it easy to man
         ✔ IO 
         ✔ Get players' name
         ✔ Display board
-        - player 1 coordinate chip placement 
-        - display board 
-        - player 2 coordinate chip placement 
-        - while loop IO so that the checkState() can keep track of the chip placements
+        ✔ Coordinate players chip placement 
+        ✔ display board 
+        ✔ while loop IO so that the checkState() can keep track of the chip placements
     - GameBoard Class
         ✔ updateBoard()
-        - checkState()
+        ✔ checkState()
             - checkHorizontal()
             - checkVertical()
-            - checkDiagonal()
+            - checkDiagonals()
+                ** takes care of left and right diagonal
     - Player Class
     - Chips Class
         ✔ Create a method that will assign chips to a player
@@ -57,7 +57,11 @@ it was easy to keep track of the status of my completion and made it easy to man
     - Create Instructions for the game
     - Complete UPER file
     - Complete OOP Questions
-    - Add to UML file to capstone folder
+    - Add UML file to capstone folder
+    
+- Challenges 
+    - Creating the algorithm to check for the winners (horizontal, vertical, diagonal)
+        
     
 *
 *

@@ -6,9 +6,13 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        // 1, 2, 2, 3, 1, 3, 3, 4,
-
         startGame();
+
+//        Player player = new Player(new Chip("X"));
+//
+//        GameBoard game = new GameBoard();
+//        game.initializeGameBoard();
+//        game.checkVertical(player);
 
     }
 

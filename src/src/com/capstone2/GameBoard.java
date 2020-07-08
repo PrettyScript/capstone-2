@@ -9,27 +9,12 @@ public class GameBoard implements IDrawable {
     private String[][] gameBoard = new String[6][7];
     private int player1 = 0;
     private int player2 = 0;
+    public boolean gameOver = false;
 
 
     @Override
     public void drawBoard() {
 
-//        gameBoard[1][0] = "X";
-//        gameBoard[0][3] = "X";
-//        gameBoard[0][4] = "X";
-//        gameBoard[0][5] = "X";
-//        gameBoard[0][6] = "X";
-//        gameBoard[2][2] = "X";
-//        gameBoard[0][2] = "X";
-
-        gameBoard[3][1] = "X";
-        gameBoard[2][2] = "X";
-        gameBoard[3][1] = "X";
-        gameBoard[1][3] = "X";
-
-        gameBoard[4][5] = "O";
-        gameBoard[3][4] = "O";
-        gameBoard[2][3] = "O";
 
         System.out.println("=========================================================");
         System.out.println("|  [1]  |  [2]  |  [3]  |  [4]  |  [5]  |  [6]  |  [7]  |");
@@ -67,7 +52,7 @@ public class GameBoard implements IDrawable {
                 + "\n";
     }
 
-    public void updateBoard(Player player, int choice) {
+    public void updateBoard(Player player, int choice) throws Exception {
         // subtracting 1 from choice, to match the zero based array
         choice--;
         for(int i=gameBoard.length-1; i> 0; i--) {
@@ -77,16 +62,19 @@ public class GameBoard implements IDrawable {
             }
         }
         drawBoard();
+        checkState();
     }
 
-    public void checkState() {
-        // check on which player won
-        // 4 in a row, up, down, and diagonal
-        // if player chip is the same 4 times then end the game
+    public void checkState() throws Exception {
+        // return boolean?
+        checkHorizontal();
+        checkVertical();
+        checkLeftDiagonal();
+        checkRightDiagonal();
 
     }
 
-    public void checkHorizontal() throws Exception  {
+    private void checkHorizontal() throws Exception  {
         for(int i=gameBoard.length-1; i>= 0; i--) {
 
             int playerOneCount = 0;
@@ -125,12 +113,12 @@ public class GameBoard implements IDrawable {
 //        System.out.println("\uD83D\uDE00");
     }
 
-    public void checkVertical() throws Exception {
+    private void checkVertical() throws Exception {
         for (int i = gameBoard[0].length - 1; i >= 0; i--) {
 
             for (int j = gameBoard.length - 1; j >= 0; j--) {
 
-                System.out.println((j+1) + " : " + gameBoard[j][i]);
+//                System.out.println((j+1) + " : " + gameBoard[j][i]);
                 try {
                     if (gameBoard[j][i].contains("X")) {
                         player1++;
@@ -152,42 +140,15 @@ public class GameBoard implements IDrawable {
                         player2 = 0;
                     }
                 } catch (Exception e) {
-                    System.out.println("error");
+//                    System.out.println("error");
                 }
             }
         }
     }
 
-    public void checkDiagonals (int direction) throws Exception {
-//        checkRightDiagonal();
-//        checkLeftDiagonal();
 
-        for (int i = gameBoard.length - 1; i >= 0; i--) {
-            for (int j = gameBoard[i].length - 1; j >= 0; j--) {
-                try {
-                    if( gameBoard[i][j].contains("X") &&
-                            gameBoard[i-1][j + (1 * direction)].contains("X") &&
-                            gameBoard[i-2][j + (2 * direction)].contains("X") &&
-                            gameBoard[i-3][j + (3 * direction)].contains("X")
-                    ) {
-                        gameOver(new Player(new Chip("X")));
-                    }
 
-                    if( gameBoard[i][j].contains("O") &&
-                            gameBoard[i-1][j + (1 * direction)].contains("O") &&
-                            gameBoard[i-2][j + (2 * direction)].contains("O") &&
-                            gameBoard[i-3][j + (3 * direction)].contains("O")
-                    ) {
-                        gameOver(new Player(new Chip("O")));
-                    }
-                } catch (Exception e) {
-                    System.out.println("error");
-                }
-            }
-        }
-    }
-
-    public void checkRightDiagonal() {
+    private void checkRightDiagonal() {
         for (int i = gameBoard.length - 1; i >= 0; i--) {
             for (int j = gameBoard[i].length - 1; j >= 0; j--) {
                 try {
@@ -213,7 +174,7 @@ public class GameBoard implements IDrawable {
         }
     }
 
-    public void checkLeftDiagonal() {
+    private void checkLeftDiagonal() {
         for (int i = gameBoard.length - 1; i >= 0; i--) {
             for (int j = gameBoard[i].length - 1; j >= 0; j--) {
                 try {
@@ -241,7 +202,8 @@ public class GameBoard implements IDrawable {
 
 
     public void gameOver(Player player) {
-        System.out.println("Game over. " + player.getChip().getName() + " has won!");
+        System.out.println("Game over. " + player.getName() + " has won!");
+        this.gameOver = true;
     }
 
     public void gameOver() {

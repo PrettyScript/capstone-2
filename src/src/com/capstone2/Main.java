@@ -6,56 +6,53 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
+        // 1, 2, 2, 3, 1, 3, 3, 4,
+
+        startGame();
+
+    }
+
+    public static void startGame() throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        GameBoard game = new GameBoard();
+
+        game.initializeGameBoard();
+        game.drawBoard();
+
 
         Player playerOne = new Player(new Chip("X"));
         Player playerTwo = new Player(new Chip("O"));
 
-//        System.out.println(playerOne.getChip().getName());
+        System.out.print("Player one enter name: ");
+        String player1Name = scanner.nextLine();
+        playerOne.setName(player1Name);
 
+        System.out.print("Player two enter name: ");
+        String player2Name = scanner.nextLine();
+        playerTwo.setName(player2Name);
 
-//        Scanner scanner = new Scanner(System.in);
-//
-//
-//        System.out.print("Player one enter name: ");
-//        String player1Name = scanner.nextLine();
-//        playerOne.setName(player1Name);
-//
-//        System.out.print("Player two enter name: ");
-//        String player2Name = scanner.nextLine();
-//        playerTwo.setName(player2Name);
-//
-//        System.out.println("Welcome " + playerOne.getName() + " & " + playerTwo.getName());
+        System.out.println("Welcome " + playerOne.getName() + " & " + playerTwo.getName());
 
-        GameBoard game = new GameBoard();
-        game.initializeGameBoard();
-        game.drawBoard();
-        game.updateBoard(playerOne, 3);
-        game.updateBoard(playerTwo, 1);
-        game.updateBoard(playerOne, 3);
-        game.updateBoard(playerTwo, 7);
-        game.updateBoard(playerOne, 1);
-        game.updateBoard(playerTwo, 2);
-        game.updateBoard(playerOne, 4);
-        game.updateBoard(playerTwo, 6);
-        game.updateBoard(playerOne, 7);
-        game.updateBoard(playerTwo, 4);
-        game.updateBoard(playerOne, 3);
-        game.updateBoard(playerTwo, 5);
+        while(!game.gameOver) {
 
-//        game.checkHorizontal();
-//        game.checkVertical();
-        game.checkDiagonals(1);
-        game.checkDiagonals(-1);
+            playerTurn(playerOne, game);
 
-    }
+            if(game.gameOver) {
+                break;
+            }
 
-    public void startGame() {
-        boolean gameOver = true;
-        while(!gameOver) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Player one turn: ");
-            scanner.nextInt();
+            playerTurn(playerTwo, game);
 
         }
     }
+
+    public static void playerTurn(Player player, GameBoard game) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print(player.getName() + " turn: ");
+        int choice = scanner.nextInt();
+        game.updateBoard(player, choice);
+    }
 }
+
+

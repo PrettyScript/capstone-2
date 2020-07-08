@@ -61,6 +61,7 @@ it was easy to keep track of the status of my completion and made it easy to man
     
 - Challenges 
     - Creating the algorithm to check for the winners (horizontal, vertical, diagonal)
+    - Configuring the FX file
         
     
 *

@@ -1,4 +1,8 @@
-package com.capstone2;
+package com.capstone2.main;
+
+import com.capstone2.Chip;
+import com.capstone2.ConnectFour;
+import com.capstone2.Player;
 
 import java.util.Scanner;
 
@@ -12,7 +16,7 @@ public class Main {
 
     public static void startGame() throws Exception {
         Scanner scanner = new Scanner(System.in);
-        GameBoard game = new GameBoard();
+        ConnectFour game = new ConnectFour();
 
         game.initializeGameBoard();
         game.drawBoard();
@@ -51,7 +55,7 @@ public class Main {
         }
     }
 
-    public static void playerTurn(Player player, GameBoard game) throws Exception {
+    public static void playerTurn(Player player, ConnectFour game) throws Exception {
         game.playerTurn = player;
         Scanner scanner = new Scanner(System.in);
 

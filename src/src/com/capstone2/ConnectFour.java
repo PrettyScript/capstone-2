@@ -2,7 +2,7 @@ package com.capstone2;
 
 import java.util.Arrays;
 
-public class GameBoard implements IDrawable {
+public class ConnectFour extends Game implements IDrawable {
 
     private Player player;
     private Chip chip;
@@ -33,11 +33,26 @@ public class GameBoard implements IDrawable {
 
     }
 
+//    public static void main(String[] args) {
+//        String str = "row1col1 row2col2\r\nrow2col1 row2col2\r\nrow3col1 row3col2";
+//
+//        MyObject[] array =
+//                Pattern.compile(System.lineSeparator(), Pattern.LITERAL)
+//                        .splitAsStream(str)
+//                        .map(s -> s.split("\\s+", 2))
+//                        .map(a -> new MyObject(a[0], a[1]))
+//                        .toArray(MyObject[]::new);
+//
+//        System.out.println(Arrays.toString(array));
+//    }
+
+    @Override
     public void initializeGameBoard()  {
         for(String[] row: gameBoard){
             Arrays.fill(row, " ");
         }
     }
+
 
     private String formatEntry(String entry){
         return "   "+entry+"   |";
@@ -53,6 +68,7 @@ public class GameBoard implements IDrawable {
                 +formatEntry(row[5])
                 +formatEntry(row[6])
                 + "\n";
+
     }
 
     public void updateBoard(Player player, int choice) throws Exception {
@@ -82,7 +98,7 @@ public class GameBoard implements IDrawable {
         checkState(player);
     }
 
-    private void checkState(Player player) throws Exception {
+    protected void checkState(Player player) throws Exception {
         checkHorizontal(player);
         checkVertical(player);
         checkDiagonals(player, 1);
@@ -186,12 +202,10 @@ public class GameBoard implements IDrawable {
     }
 
     public void gameOver(Player player) {
-        System.out.println("Game over. " + player.getName() + " has won!");
         this.gameOver = true;
     }
 
     public void gameOver() {
-        System.out.println("No one won!");
         this.gameOver = true;
         // cat game: 1,1,2,4,3,3,2,2,1,2,1,1,2,1,3,2,3,3,4,3,4,4,5,4,4,5,5,1,5,5,6,5,6,6,7,6,6,7,7,6,7,7,5,
     }

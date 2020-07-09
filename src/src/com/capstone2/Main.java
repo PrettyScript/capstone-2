@@ -8,12 +8,6 @@ public class Main {
 
         startGame();
 
-//        Player player = new Player(new Chip("X"));
-//
-//        GameBoard game = new GameBoard();
-//        game.initializeGameBoard();
-//        game.checkVertical(player);
-
     }
 
     public static void startGame() throws Exception {
@@ -39,10 +33,17 @@ public class Main {
 
         while(!game.gameOver) {
 
+
             playerTurn(playerOne, game);
 
             if(game.gameOver) {
                 break;
+
+            }
+
+            if (game.playerRedo) {
+                game.playerRedo = false;
+                playerTurn(game.playerTurn, game);
             }
 
             playerTurn(playerTwo, game);
@@ -51,11 +52,13 @@ public class Main {
     }
 
     public static void playerTurn(Player player, GameBoard game) throws Exception {
+        game.playerTurn = player;
         Scanner scanner = new Scanner(System.in);
 
         System.out.print(player.getName() + " turn: ");
         int choice = scanner.nextInt();
         game.updateBoard(player, choice);
+
     }
 }
 

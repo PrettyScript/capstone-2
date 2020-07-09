@@ -46,13 +46,23 @@ it was easy to keep track of the status of my completion and made it easy to man
     - GameBoard Class
         ✔ updateBoard()
         ✔ checkState()
-            - checkHorizontal()
-            - checkVertical()
-            - checkDiagonals()
+            ✔ checkHorizontal()
+            ✔ checkVertical()
+            ✔ checkDiagonals()
                 ** takes care of left and right diagonal
-    - Player Class
-    - Chips Class
+            ✔ gameOver()
+                - prints out the player that has won
+            ✔ gameOver()
+                - prints that no one has won
+    ✔ Player Class
+    ✔ Chips Class
         ✔ Create a method that will assign chips to a player
+    - Error Handling
+        ✔ If invalid number entered
+        ✔ if the allotted columns/rows are filled, you wouldn't be 
+            able enter that value
+            - Create a logic for the updateBoard else check: where a player enters 
+                a number for a column that is full
 - Paperwork
     - Create Instructions for the game
     - Complete UPER file
@@ -61,7 +71,10 @@ it was easy to keep track of the status of my completion and made it easy to man
     
 - Challenges 
     - Creating the algorithm to check for the winners (horizontal, vertical, diagonal)
-    - Configuring the FX file
+    ✔ Configuring the FX file
+        - I was able to create a GUI for the connect four game, but it was 
+            taking too much to configure my logic to work with the GUI.
+            I plant to use whatever free time I have left to work on it.
         
     
 *

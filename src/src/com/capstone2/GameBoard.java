@@ -10,6 +10,9 @@ public class GameBoard implements IDrawable {
     private int player1 = 0;
     private int player2 = 0;
     public boolean gameOver = false;
+    private int gameMoves = 0;
+    public boolean playerRedo = false;
+    public Player playerTurn;
 
 
     @Override
@@ -55,12 +58,26 @@ public class GameBoard implements IDrawable {
     public void updateBoard(Player player, int choice) throws Exception {
         // subtracting 1 from choice, to match the zero based array
         choice--;
-        for(int i=gameBoard.length-1; i> 0; i--) {
-            if(gameBoard[i][choice].equals(" ")) {
-                gameBoard[i][choice] = player.getChip().getName();
-                break;
+        try {
+            for (int i = gameBoard.length - 1; i >= 0; i--) {
+                if (gameBoard[i][choice].equals(" ")) {
+                    gameBoard[i][choice] = player.getChip().getName();
+                    gameMoves++;
+                    break;
+                } else if(i == 0) {
+                    System.out.println("Sorry there are no available slots in this column, " +
+                            "please wait your turn to try again");
+                    this.playerRedo = true;
+                }
             }
+        } catch (Exception e) {
+            System.out.println("Sorry, please enter a valid number to continue playing.");
         }
+
+        if(gameMoves >= 42) {
+            gameOver();
+        }
+
         drawBoard();
         checkState(player);
     }
@@ -175,6 +192,8 @@ public class GameBoard implements IDrawable {
 
     public void gameOver() {
         System.out.println("No one won!");
+        this.gameOver = true;
+        // cat game: 1,1,2,4,3,3,2,2,1,2,1,1,2,1,3,2,3,3,4,3,4,4,5,4,4,5,5,1,5,5,6,5,6,6,7,6,6,7,7,6,7,7,5,
     }
 
 }

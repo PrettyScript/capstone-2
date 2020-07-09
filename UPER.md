@@ -72,12 +72,12 @@ it was easy to keep track of the status of my completion and made it easy to man
         ✔ Implement at least 1 Interface
         ✔ Implement at least 1 Abstract class
         - Implement at least 1 lambda expression
-        - Implement at least 1 stream.
+        ✔ Implement at least 1 stream.
 - Paperwork
-    - Create Instructions for the game
+    ✔ Create Instructions for the game
     - Complete UPER file
     - Complete OOP Questions
-    - Add UML file to capstone folder
+    ✔ Add UML file to capstone folder
     
 - Challenges 
     ✔ Creating the algorithm to check for the winners (horizontal, vertical, diagonal)
@@ -85,8 +85,7 @@ it was easy to keep track of the status of my completion and made it easy to man
         - I was able to create a GUI for the connect four game, but it was 
             taking too much to configure my logic to work with the GUI.
             I plant to use whatever free time I have left to work on it.
-    - Converting a method to a stream, I understand that it is a learning experience,
-        but my code is easy to read, and I think a stream would just over complicate it.
+    - Breaking out my code
         
     
 *

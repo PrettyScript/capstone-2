@@ -9,8 +9,9 @@ public class ConnectFour extends Game implements IDrawable {
     private final String[][] gameBoard = new String[6][7];
     private int player1 = 0;
     private int player2 = 0;
-    public boolean gameOver = false;
     private int gameMoves = 0;
+
+    public boolean gameOver = false;
     public boolean playerRedo = false;
     public Player playerTurn;
 
@@ -18,41 +19,25 @@ public class ConnectFour extends Game implements IDrawable {
     @Override
     public void drawBoard() {
 
-
         System.out.println("=========================================================");
         System.out.println("|  [1]  |  [2]  |  [3]  |  [4]  |  [5]  |  [6]  |  [7]  |");
         System.out.println("=========================================================");
 
-        String board = "";
+        StringBuilder board = new StringBuilder();
 
-        for(String[] row: gameBoard){
-            board += printRow(row);
-            board += "=========================================================\n";
-        }
+        Arrays.stream(gameBoard).forEach(row ->
+        {
+            board.append(printRow(row));
+            board.append("=========================================================\n");
+        });
         System.out.println(board);
 
     }
 
-//    public static void main(String[] args) {
-//        String str = "row1col1 row2col2\r\nrow2col1 row2col2\r\nrow3col1 row3col2";
-//
-//        MyObject[] array =
-//                Pattern.compile(System.lineSeparator(), Pattern.LITERAL)
-//                        .splitAsStream(str)
-//                        .map(s -> s.split("\\s+", 2))
-//                        .map(a -> new MyObject(a[0], a[1]))
-//                        .toArray(MyObject[]::new);
-//
-//        System.out.println(Arrays.toString(array));
-//    }
-
     @Override
     public void initializeGameBoard()  {
-        for(String[] row: gameBoard){
-            Arrays.fill(row, " ");
-        }
+        Arrays.stream(gameBoard).forEach(row -> Arrays.fill(row, " "));
     }
-
 
     private String formatEntry(String entry){
         return "   "+entry+"   |";
@@ -145,10 +130,8 @@ public class ConnectFour extends Game implements IDrawable {
 
     public void checkVertical(Player player) throws Exception {
         for (int i = gameBoard[0].length - 1; i >= 0; i--) {
-
             for (int j = gameBoard.length - 1; j >= 0; j--) {
                 try {
-//                    System.out.println(j);
                     if (gameBoard[j][i].contains("X")) {
                         player1++;
 

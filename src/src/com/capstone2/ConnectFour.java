@@ -187,7 +187,6 @@ public class ConnectFour extends Game implements IDrawable {
     public void gameOver() {
         this.gameOver = true;
         System.out.println("No one won!");
-        // cat game: 1,1,2,4,3,3,2,2,1,2,1,1,2,1,3,2,3,3,4,3,4,4,5,4,4,5,5,1,5,5,6,5,6,6,7,6,6,7,7,6,7,7,5,
     }
 
 }

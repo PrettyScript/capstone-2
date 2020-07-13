@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/capstone-2.iml" filepath="$PROJECT_DIR$/capstone-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../connectFour/connectfour-spring/connectfour.iml" filepath="$PROJECT_DIR$/../connectFour/connectfour-spring/connectfour.iml" />
       <module fileurl="file://$PROJECT_DIR$/src/src.iml" filepath="$PROJECT_DIR$/src/src.iml" />
     </modules>
   </component>

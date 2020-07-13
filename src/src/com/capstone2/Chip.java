@@ -2,7 +2,7 @@ package com.capstone2;
 
 public class Chip {
 
-    private String name;
+    private final String name;
 
     public Chip(String name) {
         this.name = name;

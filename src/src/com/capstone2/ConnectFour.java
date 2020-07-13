@@ -58,6 +58,7 @@ public class ConnectFour extends Game implements IDrawable {
 
     public void updateBoard(Player player, int choice) throws Exception {
         // subtracting 1 from choice, to match the zero based array
+        System.out.println(player.getName() + " just made a move");
         choice--;
         try {
             for (int i = gameBoard.length - 1; i >= 0; i--) {
@@ -67,11 +68,11 @@ public class ConnectFour extends Game implements IDrawable {
                     break;
                 } else if(i == 0) {
                     System.out.println("Sorry there are no available slots in this column, " +
-                            "please wait your turn to try again");
+                            "please try again");
                     this.playerRedo = true;
                 }
             }
-        } catch (Exception e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Sorry, please enter a valid number to continue playing.");
         }
 
@@ -88,7 +89,6 @@ public class ConnectFour extends Game implements IDrawable {
         checkVertical(player);
         checkDiagonals(player, 1);
         checkDiagonals(player, -1);
-
     }
 
     private void checkHorizontal(Player player) throws Exception  {
@@ -121,9 +121,7 @@ public class ConnectFour extends Game implements IDrawable {
                     } else {
                         playerTwoCount = 0;
                     }
-                } catch (Exception e){
-//                    System.out.println("error");
-                }
+                } catch (ArrayIndexOutOfBoundsException ignored){}
             }
         }
     }
@@ -151,9 +149,7 @@ public class ConnectFour extends Game implements IDrawable {
                     } else {
                         player2 = 0;
                     }
-                } catch (Exception e) {
-//                    System.out.println("error");
-                }
+                } catch (ArrayIndexOutOfBoundsException ignored){}
             }
         }
     }
@@ -177,19 +173,20 @@ public class ConnectFour extends Game implements IDrawable {
                     ) {
                         gameOver(player);
                     }
-                } catch (Exception e) {
-//                    System.out.println("error");
-                }
+                } catch (ArrayIndexOutOfBoundsException ignored){}
             }
         }
     }
 
     public void gameOver(Player player) {
         this.gameOver = true;
+        System.out.println("Game over. " + player.getName() + " has won!");
+
     }
 
     public void gameOver() {
         this.gameOver = true;
+        System.out.println("No one won!");
         // cat game: 1,1,2,4,3,3,2,2,1,2,1,1,2,1,3,2,3,3,4,3,4,4,5,4,4,5,5,1,5,5,6,5,6,6,7,6,6,7,7,6,7,7,5,
     }
 

@@ -60,7 +60,7 @@ export default function Game(props) {
 
     const handleResetGame = () => {
         document.getElementById("playerTurn").value = "";
-        let cells = document.getElementsByClassName("makeStyles-cell-4");
+        let cells = document.getElementsByClassName("makeStyles-cell-8");
         for (let i = 0; i < cells.length; i++) {
             cells[i].style = "background-color: white";
         }
